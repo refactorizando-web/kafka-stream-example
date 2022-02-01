@@ -1,0 +1,19 @@
+spring.output.ansi.enabled: ALWAYS
+
+logging.pattern.console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(---){faint} %clr([%15.15t]){yellow} %clr(:){red} %clr(%m){faint}%n"
+
+server.port: 8087
+spring:
+  application:
+    name: send-number
+  cloud:
+    stream:
+      function:
+        definition: sendNumber;
+      bindings:
+        sendNumber-out-0.destination: number
+      kafka:
+        bindings.sendNumber-out-0.producer.configuration.key.serializer: org.apache.kafka.common.serialization.LongSerializer
+        bootstrap-servers: localhost:9092
+
+spring.cloud.stream.kafka.bindings.sendNumber-out-0.producer.configuration.key.serializer: org.apache.kafka.common.serialization.LongSerializer

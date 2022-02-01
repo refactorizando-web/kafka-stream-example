@@ -1,0 +1,24 @@
+server.port: 8088
+
+spring.output.ansi.enabled: ALWAYS
+
+logging.pattern.console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(---){faint} %clr([%15.15t]){yellow} %clr(:){red} %clr(%m){faint}%n"
+
+
+spring:
+  application:
+    name: number-consumer
+  cloud:
+    stream:
+      function:
+        definition: total
+      bindings:
+        total-in-0:
+          destination: number
+      kafka:
+        bootstrap-servers: localhost:9092
+        default:
+          requiredAcks: all
+
+
+

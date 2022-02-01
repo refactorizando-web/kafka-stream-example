@@ -1,0 +1,37 @@
+= kafka Stream example with Spring Cloud Stream =
+
+== Introduction
+
+This spring boot application shows an example of kafka Stream using KStream, to store
+an event.
+
+This project has two modules, the first one Number Producer send a message with a
+number. And the second one number consumer, receive an event sent from Number Producer. After the
+event is received that event is store using KeyValueBytesStoreSupplier, and a new object
+is generated with the value of the number if is odd or even
+
+If you want more information you can take a look in this article:
+https://refactorizando.com/kstream-kafka-stream-spring-boot/
+
+== Set Up
+
+Before run the project you need run a docker compose with Kafka.
+You can find the docker compose in the docker folder of both projects.
+
+    docker-compose up -d
+
+
+
+== How does it work?
+
+To run it you need to go inside every project and make a maven install
+
+        mvn clean install -u
+
+then you can run every project using from different terminals to check the events:
+
+        mvn spring-boot:run
+
+
+
+
